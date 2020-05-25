@@ -2,7 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="shortcut icon" href="https://wallpaperplay.com/walls/full/5/1/3/33415.jpg">
+<link rel="shortcut icon" href="https://cdn.imgbin.com/13/1/19/imgbin-herpes-simplex-virus-vaccine-virus-amplifying-mycoplasma-dvmTwWQW9eHsFAZVFgBTq2xX8.jpg">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}"> 
 {% endblock %}
 
@@ -35,16 +35,25 @@
     <a href="/pie"><button class="button b3"><img src="https://img.icons8.com/color/72/pie-chart--v1.png" height="25" width="25">CoronaTracker Graphs</button></a>
     <a href="/maps"><button class="button b4"><img src="https://img.icons8.com/ios-filled/72/india-map.png" height="25" width="25">Indian map representation</button></a>
     <div class="resp-container"  >
-      <h1 style='color: rgb(56, 88, 135); font-size: medium;font-family: sans-serif;'>
-      <u>  Corona Positive cases in bangalore</u>
-      </h1>
-      <iframe src="https://bbmp.maps.arcgis.com/apps/opsdashboard/index.html#/01ea403a18f740d990eb55269204fc54" width="50%" height="600px"></iframe>
+      <h1 style='background-color:rgba(145, 35, 35, 0.968);color:black;opacity: 0.75;'>
+      <u>  Current Covid 19 Situation WorldWide </u>
+      </h1></div>
+    <div class="frame">
+      <iframe width="1024" height="576" src="https://app.developer.here.com/coronavirus/" frameborder="20" scrolling="auto"></iframe>
     </div>
     <style>
       .resp-container {
-         position: relative;
+         text-align: center;
+         font-size: large;
+         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
          overflow: hidden;
-        padding-top: 3%;
+         margin: 0 auto;
+         padding-top: 3%;
+      }
+      .frame {
+        text-align:center;
+        width:100%;
+        opacity: 0.95;
       }
     </style>
 {% endblock %}
