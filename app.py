@@ -44,7 +44,7 @@ def pie():
 @app.route('/bar')
 def bar(): 
     plt.plot()
-    plt.savefig('/Users/amankumarsingh/Desktop/Project/static/image.png')
+    plt.savefig('/static/image.png')
     figfile = BytesIO()
     plt.savefig(figfile, format='png')
     figfile.seek(0)
