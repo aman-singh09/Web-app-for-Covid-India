@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="https://www.jesusislife.in/wp-content/uploads/2019/05/Savin-NY-Website-Background-Web.jpg">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}"> 
+{% endblock %}
+
+
+
+{% block body %}
+<div class="navbar">
+    <a class="active" href='/'>Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">About
+      </button>
+      <div class="dropdown-content">
+        <p class="about">This is a software which gives you update on the pandemic COVID-19<br>
+          <br>This gives you total count,state by state analysis,and graphical representation about the same.
+          <br><br>This is developed by Aman and Apurva of 4th Sem under the guidance of our Mentor Mrs.Sheryl Noel.
+      </p>
+      </div>
+    </div> 
+    <div class="dropdown">
+      <button class="dropbtn">Contact </button>
+      <div class="dropdown-content">
+        <p class="about">For any queries please contact the developers Aman and Apurva<br>
+          <br>Email id:<a id="kj" href="https://gmail.com" target="_blank">apku18cs@cmrit.ac.in</a>  and  <a id="kj" href="https://gmail.com" target="_blank">amak18cs@cmrit.ac.in</a>
+      </p>
+      </div>
+    </div> 
+  </div>
+    <a href='/state_count'><button class="button b1"><img src="https://img.icons8.com/officexs/72/accept-database.png" height="25" width="25">State count Live</button></a>
+    <a href="/bar"><button class="button b2"><img src="https://img.icons8.com/color/72/improvement.png" height="25" width="25">Bar Chart Live</button></a>
+    <a href="/pie"><button class="button b3"><img src="https://img.icons8.com/color/72/pie-chart--v1.png" height="25" width="25">CoronaTracker Graphs</button></a>
+    <a href="/maps"><button class="button b4"><img src="https://img.icons8.com/ios-filled/72/india-map.png" height="25" width="25">Indian map representation</button></a>
+    <div class="resp-container"  >
+      <h1 style='color: rgb(56, 88, 135);'>
+      <u>  Corona Positive cases in bangalore</u>
+      </h1>
+      <iframe src="https://bbmp.maps.arcgis.com/apps/opsdashboard/index.html#/01ea403a18f740d990eb55269204fc54" width="100%" height="600px"></iframe>
+    </div>
+    <style>
+      .resp-container {
+         position: relative;
+         overflow: hidden;
+        padding-top: 3%;
+      }
+    </style>
+{% endblock %}
