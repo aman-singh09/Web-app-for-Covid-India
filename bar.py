@@ -1,38 +1,51 @@
 import matplotlib.pyplot as plt
-import seaborn as sns
-import requests
+import requests 
 from bs4 import BeautifulSoup
+import geopandas as gpd
+link = 'https://www.mohfw.gov.in/'
+
 import pandas as pd
+req = requests.get(link)
 
-url = 'https://www.mohfw.gov.in/'
+soup = BeautifulSoup(req.content, "html.parser")
+thead = soup.find_all('thead')[-1]
 
-web_content = requests.get(url).content
+head = thead.find_all('tr')
 
-soup = BeautifulSoup(web_content, "html.parser")
+tbody = soup.find_all('tbody')[-1]
 
-extract_contents = lambda row: [x.text.replace('\n', '') for x in row]
+body = tbody.find_all('tr')
+head_rows = []
 
-stats = [] 
-all_rows = soup.find_all('tr')
-for row in all_rows:
-    stat = extract_contents(row.find_all('td')) 
+body_rows = []
 
-    if len(stat) == 5:
-        stats.append(stat)  
-
-new_cols = ["Sr.No", "States/UT","Confirmed","Recovered","Deceased"]
-state_data = pd.DataFrame(data = stats, columns = new_cols)
-
-
-state_data["Confirmed"] = state_data["Confirmed"].astype(int)
+for tr in head:
+    td = tr.find_all(['th', 'td'])
+    row = [i.text for i in td]
+    head_rows.append(row)
 
 
-sns.set_style('ticks')
-plt.figure(figsize = (15,10))
-plt.barh(state_data['States/UT'],    state_data['Confirmed'].map(int),align = 'center', color = 'lightblue', edgecolor = 'blue')    
+
+for tr in body:
+    td = tr.find_all(['th', 'td'])
+    row = [i.text for i in td]
+    body_rows.append(row)
+
+new_cols = ["Sr.No", "States","Confirmed","Recovered","Deceased"]
+df_bs = pd.DataFrame(body_rows[:len(body_rows)-6],columns=head_rows[0])         
+
+
+df_bs.drop('S. No.', axis=1, inplace=True)
+
+df_bs['Name of State / UT'] = df_bs['Name of State / UT'].str.replace('#', '')
+# print(df_bs)
+
+plt.figure(figsize=(28,15))
+
+plt.barh(df_bs["Name of State / UT"],df_bs["Active Cases*"].map(int),  color = 'blue',align='center')
 plt.gca().invert_yaxis()
+plt.title("Number of Active Covid-19 cases in India",fontsize = 30)
+plt.xlabel("Active Cases", fontsize=30)
+plt.ylabel("State/UT", fontsize=30)
 plt.xticks(fontsize = 14)
 plt.yticks(fontsize = 14)
-plt.title('Total Confirmed Cases Statewise', fontsize = 18 )
-for index, value in enumerate(state_data['Confirmed']):
-    plt.text(value, index, str(value), fontsize = 12)

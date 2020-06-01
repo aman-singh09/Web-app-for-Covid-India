@@ -29,18 +29,7 @@
     </div> 
   </div>
   <p>
-    {% if result != None %}
-
-    <img src="{{ user_image }}" width="1000" class="center" style="opacity:0.95;filter:alpha(opacity=70);">
-    <style>
-        .center {
-             display: block;
-             margin-left: auto;
-             margin-right: auto;
-             width: 90%;
-        }   
-    </style>
-    {% endif %}
-    </p>
-
+    <p style="color:rgb(242, 114, 16);font:caption;text-align: center;font-size:xx-large;background-color:rgb(82, 252, 193);opacity: 0.75;"><u>Timeline of Covid19 Worldwide</u></p>
+    <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map&year=2020-06-01&time=2020-02-12" style="width: 100%; height: 750px; border: 0px none;opacity: 0.90;"></iframe> 
+    <p style="color: rgb(0, 0, 0);background-color:rgb(82, 252, 193);opacity: 0.75;">*Press the play button to see time wise growth of covid19 from Dec 31 2019<br>*Also hover over the countries to know more about them.</p>  
 {% endblock %}

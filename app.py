@@ -1,5 +1,4 @@
 from flask import Flask
-from maps import plt1
 import os
 from bar import plt
 from flask import render_template, redirect, request, session,url_for,Response
@@ -25,7 +24,6 @@ def table_rep():
 
     all_rows = soup.find_all('tr')
     return all_rows
-
 
 
 @app.route('/')
@@ -55,9 +53,7 @@ def bar():
 
 @app.route('/maps')
 def maps():
-    
-    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'india.png')
-    return render_template('maps.html',user_image = full_filename)
+    return render_template('maps.html')
 
 
 if __name__ == "__main__":
