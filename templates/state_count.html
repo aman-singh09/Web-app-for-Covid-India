@@ -1,43 +1,66 @@
 {% extends 'base.html' %}
 {% block head %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="shortcut icon" href="https://cdn.imgbin.com/13/1/19/imgbin-herpes-simplex-virus-vaccine-virus-amplifying-mycoplasma-dvmTwWQW9eHsFAZVFgBTq2xX8.jpg">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}"> 
+<link rel="shortcut icon"
+  href="https://cdn.imgbin.com/13/1/19/imgbin-herpes-simplex-virus-vaccine-virus-amplifying-mycoplasma-dvmTwWQW9eHsFAZVFgBTq2xX8.jpg">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
 {% endblock %}
 
 {% block body %}
 <div class="navbar">
-  <img src="https://images.shiksha.com/mediadata/images/1571723750phpFX45hp.png " height="43" width="75" style="position: relative; float:unset;"> 
-    <a class="active" href='./'>Home</a>
-    <div class="dropdown">
-      <button class="dropbtn">About
-      </button>
-      <div class="dropdown-content">
-        <p class="about">This is a software which gives you update on the pandemic COVID-19<br>
-          <br>This gives you total count,state by state analysis,and graphical representation about the same.
-          <br><br>This is developed by Aman and Apurva of 4th Sem under the guidance of our Mentor Mrs.Sherly Noel under the Computer Science Department.
+  <img src="https://images.shiksha.com/mediadata/images/1571723750phpFX45hp.png " height="43" width="75"
+    style="position: relative; float:unset;">
+  <a class="active" href='./'>Home</a>
+  <div class="dropdown">
+    <button class="dropbtn">About
+    </button>
+    <div class="dropdown-content">
+      <p class="about">This is a software which gives you update on the pandemic COVID-19<br>
+        <br>This gives you total count,state by state analysis,and graphical representation about the same.
+        <br><br>This is developed by Aman and Apurva of 4th Sem under the guidance of our Mentor Mrs.Sherly Noel under
+        the Computer Science Department.
       </p>
-      </div>
-    </div> 
-    <div class="dropdown">
-      <button class="dropbtn">Contact </button>
-      <div class="dropdown-content">
-        <p class="about">For any queries please contact the developers Aman and Apurva<br>
-          <br>Email id:<a id="kj" href="https://gmail.com" target="_blank">apku18cs@cmrit.ac.in</a>  and  <a id="kj" href="https://gmail.com" target="_blank">amak18cs@cmrit.ac.in</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Contact </button>
+    <div class="dropdown-content">
+      <p class="about">For any queries please contact the developers Aman and Apurva<br>
+        <br>Email id:<a id="kj" href="https://gmail.com" target="_blank">apku18cs@cmrit.ac.in</a> and <a id="kj"
+          href="https://gmail.com" target="_blank">amak18cs@cmrit.ac.in</a>
       </p>
-      </div>
-    </div> 
+    </div>
   </div>
-  <div class="table">
-  <table>
-    {{ tab | safe }}
-  </table>
-  </div>
-  <style>
-    .table{
-      background-color: rgba(255, 255, 255, 0.653);
-      text-align:center;
-      text-indent: 50px;
-    }
-  </style>
+</div>
+<h2 style="text-align: center;color: brown;text-decoration: underline;">Covid 19 India Data</h2>
+<table class="data" style="width:100%" border="1">
+  <tr style="border: 0ch;font-size: larger;">
+    <th>Region</th>
+    <th>Total Infected</th>
+    <th>New Infected</th>
+    <th>Recovered</th>
+    <th>New Recovered</th>
+    <th>Deceased</th>
+    <th>New Deceased</th>
+  </tr>
+  {% for i in range(0,36) %}
+  <tr style="text-align: center;">
+
+    <td>{{ tab['regionData'][i]['region'] }}</td>
+    <td>{{ tab['regionData'][i]['totalInfected'] }}</td>
+    <td>{{ tab['regionData'][i]['newInfected'] }}</td>
+    <td>{{ tab['regionData'][i]['recovered'] }}</td>
+    <td>{{ tab['regionData'][i]['newRecovered'] }}</td>
+    <td>{{ tab['regionData'][i]['deceased'] }}</td>
+    <td>{{ tab['regionData'][i]['newDeceased'] }}</td>
+    {% endfor %}
+  </tr>
+</table>
+<style>
+  .data {
+    background-color: antiquewhite;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+  }
+</style>
 {% endblock %}

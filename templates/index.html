@@ -2,8 +2,9 @@
 
 {% block head %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="shortcut icon" href="https://cdn.imgbin.com/13/1/19/imgbin-herpes-simplex-virus-vaccine-virus-amplifying-mycoplasma-dvmTwWQW9eHsFAZVFgBTq2xX8.jpg">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}"> 
+<link rel="shortcut icon"
+  href="https://cdn.imgbin.com/13/1/19/imgbin-herpes-simplex-virus-vaccine-virus-amplifying-mycoplasma-dvmTwWQW9eHsFAZVFgBTq2xX8.jpg">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
 {% endblock %}
 
 
@@ -11,51 +12,59 @@
 {% block body %}
 
 <div class="navbar">
-  <img src="https://images.shiksha.com/mediadata/images/1571723750phpFX45hp.png " height="43" width="75" style="position: relative; float:unset;"> 
-    <a class="active" href='/'>Home</a>
-    <div class="dropdown">
-      <button class="dropbtn">About
-      </button>
-      <div class="dropdown-content">
-        <p class="about">This is a software which gives you update on the pandemic COVID-19<br>
-          <br>This gives you total count,state by state analysis,and graphical representation about the same.
-          <br><br>This is developed by Aman and Apurva of 4th Sem under the guidance of our Mentor Mrs.Sherly Noel under the Computer Science Department.
+  <img src="https://images.shiksha.com/mediadata/images/1571723750phpFX45hp.png " height="43" width="75"
+    style="position: relative; float:unset;">
+  <a class="active" href='/'>Home</a>
+  <div class="dropdown">
+    <button class="dropbtn">About
+    </button>
+    <div class="dropdown-content">
+      <p class="about">This is a software which gives you update on the pandemic COVID-19<br>
+        <br>This gives you total count,state by state analysis,and graphical representation about the same.
+        <br><br>This is developed by Aman and Apurva of 4th Sem under the guidance of our Mentor Mrs.Sherly Noel under
+        the Computer Science Department.
       </p>
-      </div>
-    </div> 
-    <div class="dropdown">
-      <button class="dropbtn">Contact </button>
-      <div class="dropdown-content">
-        <p class="about">For any queries please contact the developers Aman and Apurva<br>
-          <br>Email id:<a id="kj" href="https://gmail.com" target="_blank">apku18cs@cmrit.ac.in</a>  and  <a id="kj" href="https://gmail.com" target="_blank">amak18cs@cmrit.ac.in</a>
-      </p>
-      </div>
-    </div> 
-  </div>
-    <a href='/pie'><button class="button b1"><img src="https://img.icons8.com/color/72/pie-chart--v1.png" height="25" width="25">CoronaTracker Graphs</button></a>
-    <a href="/state_count"><button class="button b2"><img src="https://img.icons8.com/officexs/72/accept-database.png" height="25" width="25">State Count Live</button></a>
-    <a href="/bar"><button class="button b3"><img src="https://img.icons8.com/color/72/improvement.png" height="25" width="25">Bar Chart Live</button></a>
-    <a href="/maps"><button class="button b4"><img src="https://img.icons8.com/color/2x/world-map-continents.png" height="30" width="25">Live Timeline of Covid19</button></a>
-    <div class="resp-container"  >
-      <h1 style='background-color:rgba(27, 104, 58, 0.968);color:black;'>
-      <u>  Current Covid 19 Situation WorldWide </u>
-      </h1></div>
-    <div class="frame">
-      <iframe width="1024" height="576" src="https://app.developer.here.com/coronavirus/" frameborder="20" scrolling="auto"></iframe>
     </div>
-    <style>
-      .resp-container {
-         text-align: center;
-         font-size: large;
-         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
-         overflow: hidden;
-         margin: 0 auto;
-         padding-top: 3%;
-      }
-      .frame {
-        text-align:center;
-        width:100%;
-        opacity: 0.95;
-      }
-    </style>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Contact </button>
+    <div class="dropdown-content">
+      <p class="about">For any queries please contact the developers Aman and Apurva<br>
+        <br>Email id:<a id="kj" href="https://gmail.com" target="_blank">apku18cs@cmrit.ac.in</a> and <a id="kj"
+          href="https://gmail.com" target="_blank">amak18cs@cmrit.ac.in</a>
+      </p>
+    </div>
+  </div>
+</div>
+<a href='/pie'><button class="button b1"><img src="https://img.icons8.com/color/72/pie-chart--v1.png" height="25"
+      width="25">CoronaTracker Graphs</button></a>
+<a href="/state_count"><button class="button b2"><img src="https://img.icons8.com/officexs/72/accept-database.png"
+      height="25" width="25">State Count Live</button></a>
+<a href="/maps"><button class="button b4"><img src="https://img.icons8.com/color/2x/world-map-continents.png"
+      height="30" width="25">Live Timeline of Covid19</button></a>
+<div class="resp-container">
+  <h1 style='background-color:rgba(27, 104, 58, 0.968);color:black;'>
+    <u> Current Covid 19 Situation WorldWide </u>
+  </h1>
+</div>
+<div class="frame">
+  <iframe width="1024" height="576" src="https://app.developer.here.com/coronavirus/" frameborder="20"
+    scrolling="auto"></iframe>
+</div>
+<style>
+  .resp-container {
+    text-align: center;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-top: 3%;
+  }
+
+  .frame {
+    text-align: center;
+    width: 100%;
+    opacity: 0.95;
+  }
+</style>
 {% endblock %}

@@ -1,12 +1,12 @@
 from flask import Flask
 import os
-from bar import plt
-from flask import render_template, redirect, request, session,url_for,Response
+from bar import df
+from flask import render_template, redirect, request, session, url_for, Response
 import pandas as pd
 import lxml
 import seaborn as sns
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 from io import BytesIO
 import base64
 import geopandas as gpd
@@ -14,42 +14,32 @@ import geopandas as gpd
 PEOPLE_FOLDER = os.path.join('static')
 
 
-app =Flask(__name__)
+app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
 
-def table_rep():
-    url = 'https://www.mohfw.gov.in/'
-    web_content = requests.get(url).content
-    soup = BeautifulSoup(web_content, "lxml")
 
-    all_rows = soup.find_all('tr')
-    return all_rows
+def table_rep():
+    result = requests.get(
+        "https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true")
+    content = result.json()
+    return content
 
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+    return render_template('index.html')
+
 
 @app.route('/state_count')
 def state_count():
-    tab=table_rep()
-    return render_template('state_count.html',tab=tab)
+    tab = table_rep()
+    return render_template('state_count.html', tab=tab)
+
 
 @app.route('/pie')
 def pie():
     return render_template('pie.html')
 
-@app.route('/bar')
-def bar(): 
-    plt.plot()
-    plt.savefig('./static/image.png')
-    figfile = BytesIO()
-    plt.savefig(figfile, format='png')
-    figfile.seek(0)
-    figdata_png = base64.b64encode(figfile.getvalue())
-    result = figdata_png
-    result = str(figdata_png)[2:-1]
-    return render_template('bar.html',result=result)
 
 @app.route('/maps')
 def maps():
